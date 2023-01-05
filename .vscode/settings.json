@@ -1,0 +1,9 @@
+{
+  /* Note: deno.lint is enabled by default (v3.16.0) */
+  "deno.enable": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "editor.formatOnSave": true,
+  "github.copilot.enable": {
+    "*": true
+  }
+}

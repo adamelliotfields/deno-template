@@ -1,0 +1,24 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers-contrib/features/deno:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // @enabled @sort:name
+        /* Deno                */ "denoland.vscode-deno",
+        /* EditorConfig        */ "editorconfig.editorconfig",
+        /* GitHub Copilot      */ "github.copilot",
+        /* GitHub Copilot Labs */ "github.copilot-labs",
+        /* TODO Highlight      */ "wayou.vscode-todo-highlight",
+        /* Twind               */ "sastan.twind-intellisense"
+      ]
+    }
+  },
+  "forwardPorts": [
+    2222,
+    8000
+  ]
+}
