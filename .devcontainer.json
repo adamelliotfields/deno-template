@@ -11,9 +11,7 @@
         /* Deno                */ "denoland.vscode-deno",
         /* EditorConfig        */ "editorconfig.editorconfig",
         /* GitHub Copilot      */ "github.copilot",
-        /* GitHub Copilot Labs */ "github.copilot-labs",
-        /* TODO Highlight      */ "wayou.vscode-todo-highlight",
-        /* Twind               */ "sastan.twind-intellisense"
+        /* GitHub Copilot Labs */ "github.copilot-labs"
       ]
     }
   },

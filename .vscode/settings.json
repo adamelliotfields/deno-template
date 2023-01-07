@@ -2,9 +2,11 @@
   /* Note: deno.lint is enabled by default (v3.16.0) */
   "deno.config": "./deno.jsonc",
   "deno.enable": true,
+  "deno.importMap": "./import_map.json",
   "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.formatOnSave": true,
   "github.copilot.enable": {
-    "*": true
+    "*": true,
+    "markdown": true
   }
 }
