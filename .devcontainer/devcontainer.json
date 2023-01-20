@@ -1,0 +1,26 @@
+{
+  "name": "deno-template",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    // deno is in the Dockerfile
+    "ghcr.io/devcontainers/features/sshd:1": {}
+  },
+  "forwardPorts": [
+    2222,
+    8000
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // @enabled @sort:name
+        /* Deno                */ "denoland.vscode-deno",
+        /* EditorConfig        */ "editorconfig.editorconfig",
+        /* GitHub Copilot      */ "github.copilot",
+        /* GitHub Copilot Labs */ "github.copilot-labs",
+        /* Twind Intellisense  */ "sastan.twind-intellisense"
+      ]
+    }
+  }
+}
