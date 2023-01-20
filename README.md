@@ -24,7 +24,7 @@ If you use [htm](https://github.com/developit/htm), install [lit-html](https://m
 
 ### Copilot
 
-To remove Copilot, just remove it from [`./.devcontainer.json`](./.devcontainer.json) and [`./.vscode/settings.json`](./.vscode/settings.json).
+To remove Copilot, just remove it from [`./.devcontainer/devcontainer.json`](./.devcontainer/devcontainer.json) and [`./.vscode/settings.json`](./.vscode/settings.json).
 
 ### Unstable
 
