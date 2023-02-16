@@ -1,14 +1,10 @@
 {
-  "deno.config": "./deno.jsonc",
+  "deno.config": "./deno.json",
   "deno.enable": true,
   "deno.importMap": "./import_map.json",
   "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.formatOnSave": true,
   "editor.rulers": [80],
-  "github.copilot.enable": {
-    "*": true,
-    "markdown": true
-  },
   "twind.tags": [
     "tw",
     "apply",

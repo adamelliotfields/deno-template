@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "deno run -A --inspect-brk main.tsx",
+      "name": "debug",
+      "request": "launch",
+      "type": "node-terminal",
+      "serverReadyAction": {
+        "pattern": "Listening on http://localhost:([0-9]+)/",
+        "uriFormat": "http://localhost:%s/",
+        "action": "openExternally"
+      }
+    }
+  ]
+}
