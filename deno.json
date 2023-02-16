@@ -1,7 +1,8 @@
 {
   "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json?source",
   "tasks": {
-    "run": "deno run main.ts",
+    "run": "deno run --allow-net --allow-read main.tsx",
+    "watch": "deno run -A --watch main.tsx",
     "docker": "deno task docker:build && deno task docker:run",
     "docker:build": "docker build -t deno-template:latest ./.devcontainer/.",
     "docker:run": "docker run -it -p 8000:8000 -v $(pwd):/workspaces/deno-template --rm --name=deno-template deno-template:latest zsh",
