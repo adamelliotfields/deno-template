@@ -1,11 +1,13 @@
-import TwindStream from '@twind/with-react/readableStream'
-import React from 'react'
-
 import { twind, virtual as sheet } from '@twind/core'
+import TwindStream from '@twind/with-react/readableStream'
+
 import { Hono, MiddlewareHandler } from 'hono'
 import { etag, logger, serveStatic } from 'hono/middleware'
-import { serve } from 'std/http/server'
+
+import React from 'react'
 import { renderToReadableStream } from 'react-dom/server'
+
+import { serve, type ServeInit } from 'std/http/server'
 
 import config from '~/twind.config.ts'
 
@@ -13,6 +15,15 @@ const DENO_DEPLOYMENT_ID = Deno.env.get('DENO_DEPLOYMENT_ID')
 
 const app = new Hono()
 const tw = twind(config, sheet())
+const options: ServeInit = {
+  onListen({ hostname, port }) {
+    const host = hostname === '0.0.0.0' ? 'localhost' : hostname
+    // don't log the "Listening on..." message in Deno Deploy
+    if (typeof DENO_DEPLOYMENT_ID === 'undefined') {
+      console.log(`Listening on http://${host}:${port}`)
+    }
+  },
+}
 
 app.use('*', logger(), etag(), cacheControl())
 app.use('/static/*', serveStatic({ root: './' }))
@@ -20,10 +31,7 @@ app.use('/favicon.ico', serveStatic({ path: './static/favicon.ico' }))
 app.get('/', handleApp({ title: 'Home' }))
 app.all('*', handleApp({ title: 'Not Found', status: 404 }))
 
-serve(app.fetch, {
-  // don't log the "Listening on..." message in Deno Deploy
-  onListen: typeof DENO_DEPLOYMENT_ID === 'undefined' ? undefined : () => undefined,
-})
+serve(app.fetch, options)
 
 // react will send !doctype to the browser for us
 function App({ title }: AppProps) {

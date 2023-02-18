@@ -7,8 +7,8 @@
       "request": "launch",
       "type": "node-terminal",
       "serverReadyAction": {
-        "pattern": "Listening on http://localhost:([0-9]+)/",
-        "uriFormat": "http://localhost:%s/",
+        "pattern": "Listening on http://localhost:([0-9]+)",
+        "uriFormat": "http://localhost:%s",
         "action": "openExternally"
       }
     }
