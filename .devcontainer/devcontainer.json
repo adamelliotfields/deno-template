@@ -15,9 +15,11 @@
     "vscode": {
       "extensions": [
         // @enabled @sort:name
-        /* Deno                */ "denoland.vscode-deno",
-        /* EditorConfig        */ "editorconfig.editorconfig",
-        /* Twind Intellisense  */ "sastan.twind-intellisense"
+        /* Deno               */ "denoland.vscode-deno",
+        /* EditorConfig       */ "editorconfig.editorconfig",
+        /* Copilot            */ "github.copilot",
+        /* Copilot Labs       */ "github.copilot-labs",
+        /* Twind Intellisense */ "sastan.twind-intellisense"
       ]
     }
   }
