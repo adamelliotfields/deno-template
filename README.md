@@ -9,13 +9,13 @@ Template repo for Deno projects 🦕
   - [Debugging](#debugging)
   - [Unstable](#unstable)
 - [Deno Deploy](#deno-deploy)
-  - [GitHub Actions](#github-actions)
 
 ## Features
 
 - [x] Dev Container and Dockerfile
 - [x] VS Code workspace settings and launch configuration
-- [x] Starter web app that can be deployed directly to Deno Deploy
+- [x] GitHub Actions for format, lint, type-check, build, and deploy
+- [x] Starter web app that can be deployed to Deno Deploy
 
 ## VS Code
 
@@ -43,28 +43,20 @@ You'll also need to add the `--unstable` flag to your `deno run` commands.
 
 ## Deno Deploy
 
-This folder can be deployed as-is without a repo to Deno Deploy using the `deployctl` CLI.
+Uncomment the `deploy` job in [`.github/workflows/build.yml`](./github/workflows/build.yml) to deploy to Deno Deploy. Rename the `project` to your project name.
 
-To install `deployctl` run:
+If you want to deploy when a PR is merged to main, use this condition:
 
-```bash
-deno install -A --no-check https://deno.land/x/deploy/deployctl.ts
+```yaml
+deploy:
+  if: github.event.pull_request.merged == true && github.ref == 'refs/heads/main'
 ```
 
-You can use `--exclude` to ignore files and folders or `--include` to only upload the files you list.
+If you want to deploy when pushing directly to main, use this condition:
 
-```bash
-# need this to exist
-export DENO_DEPLOY_TOKEN=ddp_your_token
-
-# last arg is the entrypoint of the application
-deployctl deploy --project=your_project --exclude=README.md,LICENSE main.tsx
-
-# deploy a single file bundle (recommended)
-deno bundle main.tsx main.bundle.js
-deployctl deploy --project=your_project --include=main.bundle.js main.bundle.js
+```yaml
+deploy:
+  if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 ```
 
-### GitHub Actions
-
-See [_deployctl GitHub Action_](https://deno.com/deploy/docs/deployctl#deployctl-github-action) in the Deno Deploy docs. Also see [the Astro docs](https://docs.astro.build/en/guides/deploy/deno/#github-actions-deployment) as they support deployment to Deno via GitHub Actions as well.
+You just have to create a project and enable GitHub Actions for it in the [Deno Deploy Dashboard](https://dash.deno.com).
